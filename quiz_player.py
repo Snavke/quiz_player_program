@@ -1,5 +1,11 @@
 # Prompt user to insert txt file to read
-quiz_file = (input("Enter File Name (file.txt): "))
+import tkinter as tk
+from tkinter import filedialog
+
+root = tk.Tk()
+root.withdraw()
+
+quiz_file = filedialog.askopenfilename()
 
 
 with open (quiz_file, "r") as file:
@@ -8,6 +14,12 @@ with open (quiz_file, "r") as file:
     # Add functionality so that user can still access previous file imported (?)
 
         # Multiple txt files and menu to choose which quiz to play
+
+
+
+
+
+
 
 # Read file
 
