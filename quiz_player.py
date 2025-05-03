@@ -5,7 +5,17 @@ from tkinter import filedialog
 root = tk.Tk()
 root.withdraw()
 
+# Opens the file diaglog
 quiz_file = filedialog.askopenfilename()
+
+# Reads file
+if quiz_file:
+    with open (quiz_file, 'r') as file:
+        file_content = file.read()
+        print (file_content)
+# Handles cancels to prevent crashes
+else:
+    print ("No file selected")
 
 
 with open (quiz_file, "r") as file:
