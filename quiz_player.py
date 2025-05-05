@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import filedialog
 import json
 import random
+import os
 
 
 root = tk.Tk()
@@ -46,13 +47,23 @@ with open (quiz_file, 'r') as file:
             answer_part = line.split("Answer")[1].replace(":", "").strip()
             quiz_information[current_question]["Answer"] = answer_part
 
+# Add functionality so that user can still access previous file imported (?)
+folder_name = "imported_quiz"
+if not os.path.exists(folder_name):
+    os.makedirs(folder_name)
+
+base_name = os.path.splitext(os.path.basename(quiz_file))[0]
+json_file_name = f"{base_name}.json"
+json_file_path = os.path.join(folder_name, json_file_name)
+
 # Quizzes the user using the txt file
 print ("\nLoading quiz...")
 user_score = 0 
 
 questions = list(quiz_information.keys())
 
-# Randomized number selection
+# Randomized number selection, one question at a time
+
 random.shuffle(questions)
 
 for question_number in questions:
@@ -74,25 +85,11 @@ for question_number in questions:
     else: 
         print(f"\n{RED}Wrong! {RESET}The correct answer is {correct_answer}")
 
+# Print score after user answers all question for a txt file. 
 print (f"\nQuiz Completed \nYour final score: {user_score}/{len(questions)}")
 
     
 
-    
 
 
-
- 
-
-
-
-    
-
-    # One question at a time
-    # Print score after user answers all question for a txt file. 
-
-
-
- # Add functionality so that user can still access previous file imported (?)
-
-    # Multiple txt files and menu to choose which quiz to play
+# Multiple txt files and menu to choose which quiz to play
