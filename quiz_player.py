@@ -2,6 +2,8 @@
 import tkinter as tk
 from tkinter import filedialog
 import json
+import random
+
 
 root = tk.Tk()
 root.withdraw()
@@ -43,12 +45,20 @@ with open (quiz_file, 'r') as file:
         elif current_question and "Answer" in line:
             answer_part = line.split("Answer")[1].replace(":", "").strip()
             quiz_information[current_question]["Answer"] = answer_part
-   
 
+# Quizzes the user using the txt file
+print ("\nLoading quiz...")
+score = 0 
 
-print("\nFinal quiz dictionary:\n")
-print(json.dumps(quiz_information, indent=4))
+questions = list(quiz_information.keys())
+# Randomized number selection
+random.shuffle(questions)
 
+for question_number in questions:
+    question_data = quiz_information[question_number]
+    print (f"\n{question_number}: {question_data['Question']}")
+    for label, choice in question_data["Choices"].items():
+        print(f"  {label}. {choice}")
 
     
 
@@ -57,13 +67,12 @@ print(json.dumps(quiz_information, indent=4))
 
 
  
-# Handles cancels to prevent crashes
+
 
 
     
-# Quizzes the user using the txt file
+
     # One question at a time
-    # Randomized number selection
     # Print score after user answers all question for a txt file. 
 
 
