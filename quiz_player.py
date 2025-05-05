@@ -18,11 +18,13 @@ current_question = None
 with open (quiz_file, 'r') as file:
     lines_text_file = file.readlines()
     # skip header information in txt file
-    for line in lines_text_file:
+    for index, line in enumerate(lines_text_file):
+        original_line = line
         line = line.strip()
 
-        if "~" in line or "Created New Quiz at" in line:
+        if "~" in line or "Created New Quiz at" in line or not line:
             continue
+
        # Scan and detect for new question
         if line.startswith("Question"):
             current_question = line.split(":")[0].strip()
@@ -32,17 +34,15 @@ with open (quiz_file, 'r') as file:
                "Answer": ""
            }
         # if its a choice line (A, B, C, D)
-        elif line and line[0] in ["A", "B", "C", "D"]:
-            if "." in line:
+        elif current_question and line[0] in ["A", "B", "C", "D"] and "." in line:
                 choice_label = line[0]
                 choice_text = line.split(".", 1)[1].strip()
                 quiz_information[current_question]["Choices"][choice_label] = choice_text
 
         # if its an answer line
-        elif line.startswith("Answer"):
-            answer = line.split(":", 1)[1].strip()
-            quiz_information[current_question]["Answer"] = answer
-            print(f"Detected answer for {current_question}: {answer}")
+        elif current_question and "Answer" in line:
+            answer_part = line.split("Answer")[1].replace(":", "").strip()
+            quiz_information[current_question]["Answer"] = answer_part
    
 
 
