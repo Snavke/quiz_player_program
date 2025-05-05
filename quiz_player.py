@@ -4,6 +4,7 @@ from tkinter import filedialog
 import json
 import random
 import os
+import time
 
 # Add functionality so that user can still access previous file imported (?)
 folder_name = "imported_quiz"
@@ -23,9 +24,14 @@ choice = input("Enter your choice: ").strip()
 
 if choice == "1":
     # Opens the file diaglog
+    print ("Importing New Quiz", end='', flush=True)
+    for msg in [" .", " ..", " ..."]:
+            time.sleep(0.5)
+            print(msg, end='', flush=True)
     root = tk.Tk()
     root.withdraw()
     quiz_file = filedialog.askopenfilename()
+    root.destroy
     if not quiz_file:
         print ("No File Selected.")
         exit()
@@ -90,7 +96,10 @@ elif choice.isdigit() and 2 <= int(choice) < len(quiz_files) + 2:
     print (f"\nLoaded Quiz Successfully: {selected_quiz}")
 
 else:
-    print ("Exiting")
+    print("Exiting", end='', flush=True)
+    for msg in [" .", " ..", " ..."]:
+            time.sleep(0.5)
+            print(msg, end='', flush=True)
     exit()
 
 # Quizzes the user using the txt file

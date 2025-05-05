@@ -1,0 +1,52 @@
+{
+    "Question 1": {
+        "Question": "What is Walter White\u2019s alias in the drug world?",
+        "Choices": {
+            "A": "Eisenberg",
+            "B": "Heisenberg",
+            "C": "Goldberg",
+            "D": "Rosenberg"
+        },
+        "Answer": "B"
+    },
+    "Question 2": {
+        "Question": "What is the name of Jesse Pinkman's pet dog?",
+        "Choices": {
+            "A": "Badger",
+            "B": "Combo",
+            "C": "He doesn't have one",
+            "D": "Lucky"
+        },
+        "Answer": "C"
+    },
+    "Question 3": {
+        "Question": "What color does Sklyer White often wear to symbolize control or power?",
+        "Choices": {
+            "A": "Blue",
+            "B": "Red",
+            "C": "Green",
+            "D": "White"
+        },
+        "Answer": "C"
+    },
+    "Question 4": {
+        "Question": "What fast food chain does Gus Fring use as a front?",
+        "Choices": {
+            "A": "Los Pollos Hermanos",
+            "B": "Chicken Brothers",
+            "C": "Taco Cabana",
+            "D": "La Cocina"
+        },
+        "Answer": "A"
+    },
+    "Question 5": {
+        "Question": "What subject did Walter White teach in high school?",
+        "Choices": {
+            "A": "Physics",
+            "B": "Biology",
+            "C": "Chemistry",
+            "D": "Math"
+        },
+        "Answer": "C"
+    }
+}
