@@ -56,6 +56,21 @@ base_name = os.path.splitext(os.path.basename(quiz_file))[0]
 json_file_name = f"{base_name}.json"
 json_file_path = os.path.join(folder_name, json_file_name)
 
+# Handles file duplication (adds a parenthesis with number depending on number of file occurrence)
+if os.path.exists(json_file_path):
+    base, ext = os.path.splitext(json_file_path)
+    counter = 1
+    while os.path.exists(f"{base})_{counter}{ext}"):
+        counter += 1
+    json_file_path = f"{base}_{counter}{ext}"
+
+# Saves the JSON structured data to JSON file
+with open(json_file_path, "w") as json_file:
+    json.dump(quiz_information, json_file, indent=4)    
+
+
+
+
 # Quizzes the user using the txt file
 print ("\nLoading quiz...")
 user_score = 0 
