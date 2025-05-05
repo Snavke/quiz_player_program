@@ -48,9 +48,10 @@ with open (quiz_file, 'r') as file:
 
 # Quizzes the user using the txt file
 print ("\nLoading quiz...")
-score = 0 
+user_score = 0 
 
 questions = list(quiz_information.keys())
+
 # Randomized number selection
 random.shuffle(questions)
 
@@ -59,6 +60,21 @@ for question_number in questions:
     print (f"\n{question_number}: {question_data['Question']}")
     for label, choice in question_data["Choices"].items():
         print(f"  {label}. {choice}")
+
+    
+    user_answer = input("Answer (A, B, C, D): ").strip().lower()
+    correct_answer = question_data["Answer"].strip().lower()
+    RED = '\033[91m' 
+    GREEN = '\033[92m' 
+    RESET = '\033[0m'
+
+    if user_answer == correct_answer:
+        print (f"\n{GREEN}Correct!{RESET}")
+        user_score += 1
+    else: 
+        print(f"\n{RED}Wrong! {RESET}The correct answer is {correct_answer}")
+
+print (f"\nQuiz Completed \nYour final score: {user_score}/{len(questions)}")
 
     
 
